@@ -1,2 +1,5 @@
 [Service]
 EnvironmentFile=-/etc/conf.d/docker
+<% @extra_systemd_parameters.each do |key, value| -%>
+<%= key %>=<%= value %>
+<% end -%>

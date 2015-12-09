@@ -122,6 +122,10 @@
 #   Any extra parameters that should be passed to the docker daemon.
 #   Defaults to undefined
 #
+# [*extra_systemd_parameters*]
+#   Any extra parameters which should be set in the docker daemon's systemd unit file.
+#   Defaults to {}
+#
 # [*shell_values*]
 #   Array of shell values to pass into init script config files
 #
@@ -260,6 +264,7 @@ class docker(
   $dns_search                        = $docker::params::dns_search,
   $socket_group                      = $docker::params::socket_group,
   $extra_parameters                  = undef,
+  $extra_systemd_parameters          = {},
   $shell_values                      = undef,
   $proxy                             = $docker::params::proxy,
   $no_proxy                          = $docker::params::no_proxy,
@@ -303,6 +308,7 @@ class docker(
   validate_bool($manage_package)
   validate_array($docker_users)
   validate_array($log_opt)
+  validate_hash($extra_systemd_parameters)
 
   if $log_level {
     validate_re($log_level, '^(debug|info|warn|error|fatal)$', 'log_level must be one of debug, info, warn, error or fatal')

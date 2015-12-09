@@ -2,6 +2,9 @@
 EnvironmentFile=-/etc/sysconfig/docker
 EnvironmentFile=-/etc/sysconfig/docker-storage
 EnvironmentFile=-/etc/sysconfig/docker-network
+<% @extra_systemd_parameters.each do |key, value| -%>
+<%= key %>=<%= value %>
+<% end -%>
 ExecStart=
 ExecStart=/usr/bin/<%= @docker_command %> -d -H fd:// $OPTIONS \
       $DOCKER_STORAGE_OPTIONS \

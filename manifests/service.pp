@@ -37,6 +37,7 @@ class docker::service (
   $service_enable                    = $docker::service_enable,
   $root_dir                          = $docker::root_dir,
   $extra_parameters                  = $docker::extra_parameters,
+  $extra_systemd_parameters          = $docker::extra_systemd_parameters,
   $shell_values                      = $docker::shell_values,
   $proxy                             = $docker::proxy,
   $no_proxy                          = $docker::no_proxy,
