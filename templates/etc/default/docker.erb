@@ -2,6 +2,9 @@
 #
 # THIS FILE IS MANAGED BY PUPPET. Changes will be overwritten.
 
+<% if @shell_values %><% @shell_values_array.each do |param| %>
+<%= param %><% end %><% end %>
+
 # # Customize location of Docker binary (especially for development testing).
 DOCKER="/usr/bin/<%= @docker_command %>"
 
@@ -50,5 +53,3 @@ DOCKER_OPTS="\
 <% end -%>
 <% if @extra_parameters %><% @extra_parameters_array.each do |param| %> <%= param %><% end %><% end -%>
 "
-<% if @shell_values %><% @shell_values_array.each do |param| %>
-<%= param %><% end %><% end %>
