@@ -1,6 +1,8 @@
 # This file is managed by Puppet and local changes
 # may be overwritten
 
+<% if @shell_values %><% @shell_values_array.each do |param| %> <%= param %><% end %><% end -%>
+
 OPTIONS="<% if @root_dir %> -g <%= @root_dir %><% end -%>
 <% if @tcp_bind %> -H <%= @tcp_bind %><% end -%>
 <% if @socket_bind %> -H <%= @socket_bind %><% end -%>
@@ -19,4 +21,3 @@ OPTIONS="<% if @root_dir %> -g <%= @root_dir %><% end -%>
 <% if @no_proxy %>no_proxy='<%= @no_proxy %>'<% end %>
 # This is also a handy place to tweak where Docker's temporary files go.
 # TMPDIR="<%= @tmp_dir %>"
-<% if @shell_values %><% @shell_values_array.each do |param| %> <%= param %><% end %><% end -%>
